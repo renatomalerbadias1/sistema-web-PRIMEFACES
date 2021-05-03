@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dtb-locadora-rich?zeroDateTimeBehavior=convertToNull</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+
+		<property name="hbm2ddl.auto">validate</property>
+
+		<property name="show_sql">true</property>
+
+		<mapping class="br.com.foursys.locadora.bean.Cidade" />
+		<mapping class="br.com.foursys.locadora.bean.Cliente" />
+		<mapping class="br.com.foursys.locadora.bean.Contato" />
+		<mapping class="br.com.foursys.locadora.bean.Endereco" />
+		<mapping class="br.com.foursys.locadora.bean.Estado" />
+		<mapping class="br.com.foursys.locadora.bean.Filme" />
+		<mapping class="br.com.foursys.locadora.bean.FormaPagamento" />
+		<mapping class="br.com.foursys.locadora.bean.Funcionario" />
+		<mapping class="br.com.foursys.locadora.bean.Locacao" />
+		<mapping class="br.com.foursys.locadora.bean.LocacaoFilme" />
+		<mapping class="br.com.foursys.locadora.bean.Regiao" />
+	
+	
+	</session-factory>
+</hibernate-configuration>

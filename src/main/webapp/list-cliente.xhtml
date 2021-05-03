@@ -1,0 +1,160 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+		<title>Consulta de Cliente</title>
+
+		<h:form id="listCliente">
+
+			<p:growl id="growl" showDetail="true" life="4000" />
+
+			<p:tabView>
+
+				<p:tab id="ltCliente" title="Clientes Cadastrados">
+
+					<p:panel id="pnClientes">
+
+						<h:panelGrid columns="6">
+							<p:outputLabel value="Nome:" />
+							<p:inputText value="#{clienteBacking.nomePesquisar}" size="80" />
+							<p:commandButton id="btnPesquisar" value="Pesquisar"
+								action="#{clienteBacking.pesquisar}" update="@form" />
+						</h:panelGrid>
+
+						<p:separator />
+
+						<h:panelGrid columns="1">
+
+							<p:dataTable id="tabelaClientes"
+								value="#{clienteBacking.listaClientes}" var="cliente"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+															  {PreviousPageLink} {PageLinks}
+															  {NextPageLink} {LastPageLink}
+															  {Exporters}"
+								paginator="true" rows="5" lazy="true"
+								emptyMessage="Nenhum registro encontrado!"
+								rowKey="#{cliente.idCliente}" selectionMode="single"
+								selection="#{clienteBacking.clienteSelecionado}">
+
+								<f:facet name="{Exporters}">
+
+									<div style="float: right; padding-top: 5px;">
+
+										<h:commandLink id="excel">
+											<p:graphicImage name="/demo/images/excel.png" />
+											<p:dataExporter type="xls" target="tabelaClientes"
+												fileName="listaClientes" />
+										</h:commandLink>
+
+										<h:commandLink>
+											<p:graphicImage name="/demo/images/xlsx.png" width="24" />
+											<p:dataExporter type="xlsxstream" target="tabelaClientes"
+												fileName="listaClientes" />
+										</h:commandLink>
+
+										<h:commandLink id="pdf">
+											<p:graphicImage name="/demo/images/pdf.png" />
+											<p:dataExporter type="pdf" target="tabelaClientes"
+												fileName="listaClientes" />
+										</h:commandLink>
+
+										<h:commandLink id="csv">
+											<p:graphicImage name="/demo/images/csv.png" />
+											<p:dataExporter type="csv" target="tabelaClientes"
+												fileName="listaClientes" />
+										</h:commandLink>
+
+										<h:commandLink id="xml">
+											<p:graphicImage name="/demo/images/xml.png" />
+											<p:dataExporter type="xml" target="tabelaClientes"
+												fileName="listaClientes" />
+										</h:commandLink>
+									</div>
+
+								</f:facet>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Código" />
+									</f:facet>
+									<h:outputText value="#{cliente.idCliente}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Nome" />
+									</f:facet>
+									<h:outputText value="#{cliente.nome}" />
+								</p:column>
+
+								
+ 
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Data Nsc:" />
+									</f:facet>
+									<h:outputText value="#{cliente.dataNascimento}" />
+								</p:column>
+								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Sexo" />
+									</f:facet>
+									<h:outputText value="#{cliente.sexo}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Celular" />
+									</f:facet>
+									<h:outputText value="#{cliente.contatoIdContato.celular}" />
+								</p:column>
+								
+								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Email" />
+									</f:facet>
+									<h:outputText value="#{cliente.contatoIdContato.email}" />
+								</p:column>
+								
+								
+
+							</p:dataTable>
+
+							<p:contextMenu for="tabelaClientes">
+								<p:menuitem value="Alterar" action="#{clienteBacking.alterar}"
+									update="@form" />
+								<p:menuitem value="Excluir" action="#{clienteBacking.excluir}"
+									update="@form">
+									<p:confirm header="Excluir Cliente" message="Confirma exclusão?" />
+								</p:menuitem>
+							</p:contextMenu>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" />
+							</p:confirmDialog>
+
+						</h:panelGrid>
+
+					</p:panel>
+					
+					<p:blockUI block="ltCliente" trigger="btnPesquisar" />
+					
+
+				</p:tab>
+
+			</p:tabView>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

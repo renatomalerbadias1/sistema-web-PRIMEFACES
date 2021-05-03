@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<title>Cadastro de Filme</title>
+
+		<h:form id="formCadFilme">
+
+			<p:growl id="growl" showDetail="true" life="4000" />
+
+			<p:tabView>
+
+				<p:tab id="cadFilme" title="Cadastro de Filme">
+
+					<p:panel id="pnFilme">
+
+						<p:panelGrid columns="2">
+
+							<p:outputLabel value="Nome:" />
+							<p:inputText value="#{filmeBacking.nome}" size="45"
+								maxlength="45" placeholder="Ex: A Era do Gelo" />
+
+							<p:outputLabel value="Valor:" />
+							<p:inputNumber value="#{filmeBacking.valor}"
+								placeholder="Ex: 10,00" symbol="R$" symbolPosition="p" />
+
+							<p:outputLabel value="Disponível:" />
+							<p:selectOneRadio id="disponivel"
+								value="#{filmeBacking.disponivel}">
+								<f:selectItem itemLabel="Sim" itemValue="Sim" />
+								<f:selectItem itemLabel="Não" itemValue="Não" />
+							</p:selectOneRadio>
+
+							<p:outputLabel value="Promoção:" />
+							<p:selectOneRadio id="promocao" value="#{filmeBacking.promocao}">
+								<f:selectItem itemLabel="Sim" itemValue="Sim" />
+								<f:selectItem itemLabel="Não" itemValue="Não" />
+							</p:selectOneRadio>
+
+							<p:outputLabel value="Valor Promoção:" />
+							<p:inputNumber value="#{filmeBacking.valorPromocao}"
+								placeholder="Ex: 10,00" symbol="R$" symbolPosition="p" />
+
+							<p:outputLabel value="Diretor:" />
+							<p:inputText value="#{filmeBacking.diretor}" size="45"
+								maxlength="45" placeholder="Ex: Staley Kubrik" />
+
+							<p:outputLabel value="Ano Lançamento:" />
+							<p:inputNumber value="#{filmeBacking.anoLancamento}"
+								placeholder="Ex: 1998" size="10" maxValue="2021"
+								decimalPlaces="0" />
+
+							<p:outputLabel value="Faixa Etária:" />
+							<p:inputNumber value="#{filmeBacking.faixaEtaria}"
+								placeholder="Ex: 18" size="10" maxValue="18" decimalPlaces="0" />
+
+							<p:outputLabel value="Gênero:" />
+							<p:selectOneMenu filter="true" value="#{filmeBacking.genero}"
+								size="40">
+								<f:selectItem itemValue="" itemLabel="- Selecione Gênero -" />
+								<f:selectItems value="#{filmeBacking.listaGeneros}" />
+							</p:selectOneMenu>
+
+						</p:panelGrid>
+
+						<p:panelGrid columns="3">
+
+							<p:commandButton id="btnSalvar" value="Salvar"
+								action="#{filmeBacking.cadastrar}" update="@form" />
+
+							<p:commandButton id="btnCancelar" value="Cancelar"
+								action="#{filmeBacking.cancelar}" update="@form" />
+
+							<p:commandButton id="btnSair" value="Sair"
+								action="#{filmeBacking.sair}" update="@form" />
+
+						</p:panelGrid>
+
+					</p:panel>
+
+					<p:blockUI block="pnFilme" trigger="btnSalvar" />
+
+				</p:tab>
+
+			</p:tabView>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

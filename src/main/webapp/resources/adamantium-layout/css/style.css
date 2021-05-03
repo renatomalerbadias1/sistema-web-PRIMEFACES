@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+
+body {
+	
+	
+		background-image: url("#{resource['adamantium-layout:images/img1.jpg']}");
+		background-repeat: no-repeat;
+		
+		align-items: center;
+ 
+	
+}
+
+
+
+
+

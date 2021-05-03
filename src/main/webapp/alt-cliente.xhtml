@@ -1,0 +1,153 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<title>Alteração de Cliente</title>
+
+		<h:form id="formAltCliente">
+
+			<p:growl id="growl" showDetail="true" life="4000" />
+
+			<p:tabView id="tabCliente"
+				activeIndex="#{clienteBacking.indexTab}">
+
+				<p:tab id="cadDados" title="Dados Básicos">
+
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Nome:" />
+						<p:inputText disabled="true" value="#{clienteBacking.nome}"
+							size="60" placeholder="Ex: Fulano de Tal" />
+
+						<p:outputLabel value="CPF:" />
+						<p:inputMask disabled="true" value="#{clienteBacking.cpf}"
+							size="20" placeholder="Ex: 123.123.123-12" mask="999.999.999-99" />
+
+						<p:outputLabel value="RG:" />
+						<p:inputMask disabled="true" value="#{clienteBacking.rg}"
+							size="20" placeholder="Ex: 12.123.123-X" mask="99.999.999-*" />
+
+						<p:outputLabel value="Data Nasc:" />
+						<p:calendar disabled="true" id="button"
+							value="#{clienteBacking.dataNascimento}" showOn="button"
+							pattern="dd/MM/yyyy" placeholder="Ex: 01/01/2000" />
+
+						<p:outputLabel value="Idade:" />
+						<p:inputNumber disabled="true" value="#{clienteBacking.idade}"
+							placeholder="Ex: 35" size="5" minValue="1" maxValue="150"
+							decimalPlaces="0" />
+
+						<h:outputText value="Sexo:" />
+						<p:selectOneRadio disabled="true"
+							value="#{clienteBacking.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</p:selectOneRadio>
+					</h:panelGrid>
+
+				</p:tab>
+
+				<p:tab id="cadEndereco" title="Dados de Endereço">
+
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Tipo:" />
+						<p:selectOneMenu filter="true"
+							value="#{clienteBacking.tipoLogradouro}" size="30">
+							<f:selectItem itemValue="" itemLabel="- Selecione Logradouro -" />
+							<f:selectItems value="#{clienteBacking.listaTipoLogradouros}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Logradouro:" />
+						<p:inputText value="#{clienteBacking.nomeEndereco}" size="40"
+							placeholder="Ex: 15 de Novembro" />
+
+						<p:outputLabel value="Numero:" />
+						<p:inputNumber value="#{clienteBacking.numero}"
+							placeholder="Ex: 123" size="10" maxValue="99999"
+							decimalPlaces="0" />
+
+						<p:outputLabel value="Complemento:" />
+						<p:inputText value="#{clienteBacking.complemento}" size="20"
+							placeholder="Ex: Sala B" />
+
+						<p:outputLabel value="Bairro:" />
+						<p:inputText value="#{clienteBacking.bairro}" size="40"
+							placeholder="Ex: Centro" />
+
+						<p:outputLabel value="Estado:" />
+						<p:selectOneMenu id="cbEstado" filter="true"
+							value="#{clienteBacking.estado}" size="40">
+							<f:selectItem itemValue="" itemLabel="- Selecione Estado -" />
+							<f:selectItems value="#{clienteBacking.listaEstados}"
+								var="estado" itemLabel="#{estado.nome}"
+								itemValue="#{estado.idEstado}" />
+							<p:ajax event="change" update="cbCidade"
+								listener="#{clienteBacking.carregarCidades}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Cidade:" />
+						<p:selectOneMenu id="cbCidade" filter="true"
+							disabled="#{clienteBacking.comboCidade}"
+							value="#{clienteBacking.cidade}" size="40">
+							<f:selectItem itemValue="" itemLabel="- Selecione Cidade -" />
+							<f:selectItems value="#{clienteBacking.listaCidades}"
+								var="cidade" itemLabel="#{cidade.nome}"
+								itemValue="#{cidade.idCidade}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="CEP:" />
+						<p:inputMask value="#{clienteBacking.cep}" size="15"
+							placeholder="Ex: 12345-123" mask="99999-999" />
+					</h:panelGrid>
+
+				</p:tab>
+
+				<p:tab id="cadContato" title="Dados de Contato">
+
+					<h:panelGrid columns="4">
+						<p:outputLabel value="Telefone:" />
+						<p:inputMask value="#{clienteBacking.telefone}" size="20"
+							placeholder="Ex: (11) 1234-1234" mask="(99) 9999-9999" />
+
+						<p:outputLabel value="Celular:" />
+						<p:inputMask value="#{clienteBacking.celular}" size="20"
+							placeholder="Ex: (11) 91234-1234" mask="(99) 99999-9999" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="3">
+						<p:outputLabel value="E-mail:" />
+						<p:spacer height="10" />
+						<p:inputText value="#{clienteBacking.email}" size="53"
+							placeholder="Ex: contato@foursys.com.br" />
+					</h:panelGrid>
+
+				</p:tab>
+
+				
+
+				<p:blockUI block="tabCliente" trigger="btnSalvar" />
+				<p:blockUI block="tabCliente" trigger="cbEstado" />
+
+			</p:tabView>
+
+			<h:panelGrid columns="3">
+
+				<p:commandButton id="btnSalvar" value="Salvar"
+					action="#{clienteBacking.alterarCliente}" update="@form" />
+
+				<p:commandButton id="btnCancelar" value="Cancelar"
+					action="#{clienteBacking.cancelar}" update="@form" />
+
+				<p:commandButton id="btnSair" value="Sair"
+					action="#{clienteBacking.sair}" update="@form" />
+
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
