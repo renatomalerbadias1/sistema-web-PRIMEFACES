@@ -11,45 +11,54 @@
 
 <h:body >
 
-
 	<h:form id="formularioLogin">
-	
-		<p:growl id="grow" showDetail="true" life="4000"/>
 
-		<div align="center">
+		<p:growl id="grow" showDetail="true" life="4000" />
+		
+		
+
+		<div align="center" class="kenburns-top">
 
 			<p:spacer height="100" />
 
-			<p:separator />
+			
 
-			<h:graphicImage name="images/logo01.jpg" library="adamantium-layout"
-				style="height:60px;  margin-top:18px;" />
+			<h:graphicImage name="images/bg04.jpeg" library="adamantium-layout"
+				style="height:90px;  margin-top:18px;" />
 
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<p:outputLabel value="Login:" />
-				<p:inputText value="#{loginBacking.login}" required="true" 
-							requiredMessage="Login obrigatório!">
-					<p:ajax event="focus"/>			
+				<p:inputText value="#{loginBacking.login}" required="true"
+					requiredMessage="Login obrigatório!">
+					<p:ajax event="focus" />
 				</p:inputText>
 
 				<p:outputLabel value="Senha:" />
-				<p:password id="feedback" value="#{loginBacking.senha}" feedback="true" 
-								required="true" requiredMessage="Senha obrigatória!">
-					<p:ajax event="focus"/>	
+				<p:password id="feedback" value="#{loginBacking.senha}"
+					feedback="true" required="true"
+					requiredMessage="Senha obrigatória!">
+					<p:ajax event="focus" />
 				</p:password>
 
 			</h:panelGrid>
 
-			<p:commandButton value="Login"
-				action="#{loginBacking.efetuarLogin}" update="@form" />
+			
+			<p:commandButton  class="scale-up-center" value="Login" action="#{loginBacking.efetuarLogin}"
+				update="@form" />
 
-			<p:separator />
+			
+
+			
+			
+			
 		</div>
+
+
+
 	</h:form>
-	
-	<h:outputStylesheet name="css/style.css"
-		library="adamantium-layout" />
+
+	<h:outputStylesheet name="css/style.css" library="adamantium-layout" />
 </h:body>
 
 </html>

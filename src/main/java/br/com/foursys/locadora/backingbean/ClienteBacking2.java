@@ -553,14 +553,18 @@ public class ClienteBacking2 implements Serializable {
 
 	public void alterar() throws ParseException {
 		nome = clienteSelecionado.getNome();
+		
+		// dados basicos
 		cpf = clienteSelecionado.getCpf();
 		rg = clienteSelecionado.getRg();
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		dataNascimento = new Date(format.parse(clienteSelecionado.getDataNascimento()).getTime());;
-		
+	
 		idade = clienteSelecionado.getIdade() + "";
 		sexo = clienteSelecionado.getSexo();
+		
+		// dados de endereco
 		carregarEstados();
 		carregarCidadesAlterar();
 		tipoLogradouro = clienteSelecionado.getEnderecoIdEndereco().getTipoLogradouro();
@@ -571,6 +575,7 @@ public class ClienteBacking2 implements Serializable {
 		cep = clienteSelecionado.getEnderecoIdEndereco().getCep();
 		estado = clienteSelecionado.getEnderecoIdEndereco().getCidadeIdCidade().getEstadoIdEstado().getIdEstado();
 		cidade = clienteSelecionado.getEnderecoIdEndereco().getCidadeIdCidade().getIdCidade();
+		// dados de contato
 		telefone = clienteSelecionado.getContatoIdContato().getTelefone();
 		celular = clienteSelecionado.getContatoIdContato().getCelular();
 		email = clienteSelecionado.getContatoIdContato().getEmail();
