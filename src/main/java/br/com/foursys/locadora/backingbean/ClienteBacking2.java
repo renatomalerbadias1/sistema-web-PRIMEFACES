@@ -333,9 +333,9 @@ public class ClienteBacking2 implements Serializable {
 				new ContatoController().salvar(contato);
 				new ClienteController().salvar(cliente);
 				limparCampos();
-				JSFUtil.addInfoMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_SALVO);
+				JSFUtil.addInfoMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_SALVO);
 			} catch (Exception e) {
-				JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_ERRO_SALVO);
+				JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_ERRO_SALVO);
 			}
 		}
 	}
@@ -351,9 +351,9 @@ public class ClienteBacking2 implements Serializable {
 				new EnderecoController().salvar(endereco);
 				new ContatoController().salvar(contato);
 				limparCampos();
-				JSFUtil.addInfoMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_SALVO);
+				JSFUtil.addInfoMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_SALVO);
 			} catch (Exception e) {
-				JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_ERRO_SALVO);
+				JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_ERRO_SALVO);
 			}
 		}
 	}
@@ -365,27 +365,27 @@ public class ClienteBacking2 implements Serializable {
 
 	private boolean validar() {
 		if (Valida.isEmptyOrNull(nome)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.NOME_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.NOME_VAZIO);
 			return false;
 		}
 		if (Valida.isEmptyOrNull(cpf)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.CPF_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CPF_VAZIO);
 			return false;
 		}
 		if (Valida.isEmptyOrNull(rg)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.RG_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.RG_VAZIO);
 			return false;
 		}
 		if (Valida.isDateNull(dataNascimento)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.DATA_NASCIMENTO_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.DATA_NASCIMENTO_VAZIO);
 			return false;
 		}
 		if (Valida.isEmptyOrNull(idade)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.IDADE_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.IDADE_VAZIO);
 			return false;
 		}
 		if (Valida.isEmptyOrNull(sexo)) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.SEXO_VAZIO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.SEXO_VAZIO);
 			return false;
 		}
 
@@ -542,7 +542,7 @@ public class ClienteBacking2 implements Serializable {
 		try {
 			listaClientes = new ClienteController().buscarPorNome(nomePesquisar);
 		} catch (Exception e) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_ERRO_PESQUISA);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_ERRO_PESQUISA);
 		}
 	}
 	
@@ -594,9 +594,9 @@ public class ClienteBacking2 implements Serializable {
 			new EnderecoController().excluir(clienteSelecionado.getEnderecoIdEndereco());
 			new ContatoController().excluir(clienteSelecionado.getContatoIdContato());
 			pesquisar();
-			JSFUtil.addInfoMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_EXCLUIDO);
+			JSFUtil.addInfoMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_EXCLUIDO);
 		} catch (Exception e) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.FUNCIONARIO_ERRO_EXCLUIDO);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CLIENTE_ERRO_EXCLUIDO);
 		}
 	}
 
@@ -610,7 +610,7 @@ public class ClienteBacking2 implements Serializable {
 		try {
 			listaEstados = new EstadoController().buscarTodos();
 		} catch (Exception e) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.ESTADO_ERRO_PESQUISA);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.ESTADO_ERRO_PESQUISA);
 		}
 	}
 
@@ -650,7 +650,7 @@ public class ClienteBacking2 implements Serializable {
 				comboCidade = true;
 			}
 		} catch (Exception e) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.CIDADE_ERRO_PESQUISA);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CIDADE_ERRO_PESQUISA);
 		}
 	}
 	
@@ -664,7 +664,7 @@ public class ClienteBacking2 implements Serializable {
 			listaCidades = new CidadeController().buscarTodos();
 			comboCidade = false;
 		} catch (Exception e) {
-			JSFUtil.addErrorMessage(Titulo.CADASTRO_FUNCIONARIO, Mensagem.CIDADE_ERRO_PESQUISA);
+			JSFUtil.addErrorMessage(Titulo.CADASTRO_CLIENTE, Mensagem.CIDADE_ERRO_PESQUISA);
 		}
 	}
 

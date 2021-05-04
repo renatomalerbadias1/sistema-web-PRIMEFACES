@@ -42,6 +42,15 @@ public class Mensagem {
 	public static String FUNCIONARIO_ERRO_SALVO = "Erro ao salvar o funcionário!";
 	public static String FUNCIONARIO_ERRO_EXCLUIDO = "Erro ao excluir o funcionário!";
 	public static String FUNCIONARIO_ERRO_PESQUISA = "Erro ao pesquisar funcionário!";
+	
+	public static String CLIENTE_SALVO = "CLIENTE salvo com sucesso!";
+	public static String CLIENTE_EXCLUIDO = "CLIENTE excluído com sucesso!";
+	
+	public static String CLIENTE_ERRO_SALVO = "Erro ao salvar o cLIENTE!";
+	public static String CLIENTE_ERRO_EXCLUIDO = "Erro ao excluir o cLIENTE!";
+	public static String CLIENTE_ERRO_PESQUISA = "Erro ao pesquisar cLIENTE!";
+	
+	
 
 	public static String ESTADO_ERRO_PESQUISA = "Erro ao pesquisar estados!";
 	public static String CIDADE_ERRO_PESQUISA = "Erro ao pesquisar cidades!";
