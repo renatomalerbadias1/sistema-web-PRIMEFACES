@@ -44,7 +44,7 @@ public class Locacao implements Serializable {
     private String dataDevolucao;
     @Basic(optional = false)
     @Column(name = "valor")
-    private String valor;
+    private double valor;
     @Basic(optional = false)
     @Column(name = "devolvido")
     private String devolvido;
@@ -67,7 +67,7 @@ public class Locacao implements Serializable {
         this.idLocacao = idLocacao;
     }
 
-    public Locacao(Integer idLocacao, String dataLocacao, String dataDevolucao, String valor, String devolvido) {
+    public Locacao(Integer idLocacao, String dataLocacao, String dataDevolucao, double valor, String devolvido) {
         this.idLocacao = idLocacao;
         this.dataLocacao = dataLocacao;
         this.dataDevolucao = dataDevolucao;
@@ -99,11 +99,11 @@ public class Locacao implements Serializable {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public String getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

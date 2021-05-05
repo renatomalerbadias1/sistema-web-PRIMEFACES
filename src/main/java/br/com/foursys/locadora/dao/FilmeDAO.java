@@ -34,12 +34,24 @@ public class FilmeDAO extends GenericDAO {
         sessao.close();
         return listaRetorno;
     }
+    
+    @SuppressWarnings("unchecked")
+	public ArrayList<Filme> buscarDisponivel(String disponivel) throws Exception {
+        ArrayList<Filme> listaRetorno = new ArrayList<Filme>();
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = sessao.createCriteria(Filme.class);
+        criteria.add(Restrictions.eq("disponivel", disponivel));
+        criteria.addOrder(Order.asc("idFilme"));
+        listaRetorno = (ArrayList<Filme>) criteria.list();
+        sessao.close();
+        return listaRetorno;
+    }
 
     public Filme buscarPorCodigo(int codigo) throws Exception {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Filme filme = (Filme) sessao.get(Filme.class, codigo);
+        Filme retorno = (Filme) sessao.get(Filme.class, codigo);
         sessao.close();
-        return filme;
+        return retorno;
     }
 
 }

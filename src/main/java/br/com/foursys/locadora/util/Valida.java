@@ -2,11 +2,9 @@ package br.com.foursys.locadora.util;
 
 import java.util.Date;
 
-/**
- * Classe responsável por armazenar os métodos de validação de dados
- *
- * @author Diego Munhoz
- * @since 17/03/2021
+/*
+ * @author Renato
+ * @since 05/05/2021
  * @version 1.0
  */
 public class Valida {

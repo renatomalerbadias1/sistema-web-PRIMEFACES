@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import br.com.foursys.locadora.bean.Estado;
 import br.com.foursys.locadora.dao.EstadoDAO;
 
+/*
+ * @author Renato
+ * @since 05/05/2021
+ * @version 1.0
+ */
+
 public class EstadoController {
 
 	public ArrayList<Estado> buscarTodos() {

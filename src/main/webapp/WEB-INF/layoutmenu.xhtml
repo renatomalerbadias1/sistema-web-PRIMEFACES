@@ -7,22 +7,22 @@
 		<h:form>
 			<p:panelMenu style="width:250px">
 			
-				<p:submenu label="CADASTRO">
+				<p:submenu label="CADASTRO" rendered="#{!loginBacking.user}">
 					<p:menuitem value="Cadastrar Filme" url="cad-filme.xhtml"/>
 					<p:menuitem value="Cadastrar Cliente" url="cad-cliente.xhtml"/>
 					<p:menuitem value="Cadastrar Funcionário" url="cad-funcionario.xhtml"/>
 				</p:submenu>
 				
-				<p:submenu label="CONSULTA+RELATÓRIO">
+				<p:submenu label="CONSULTA+RELATÓRIO" rendered="#{!loginBacking.user}">
 					<p:menuitem value="Consultar Filme" url="list-filme.xhtml"/>
 					<p:menuitem value="Consultar Cliente" url="list-cliente.xhtml"/>
 					<p:menuitem value="Consultar Funcionário"  url="list-funcionario.xhtml"/>
-					<p:menuitem value="Consultar Locação" />
+					<p:menuitem value="Consultar Locação"  url="list-locacao.xhtml"/>
 				</p:submenu>
 				
-				<p:submenu label="LOCAÇÃO">
-					<p:menuitem value="Efetuar Locação" />
-					<p:menuitem value="Efetuar Devolução" />
+				<p:submenu label="LOCAÇÃO" rendered="#{loginBacking.user || loginBacking.dev}" >
+					<p:menuitem value="Efetuar Locação" url="cad-locacao.xhtml"/>
+					<p:menuitem value="Efetuar Devolução" url="cad-devolucao.xhtml"/> 
 				</p:submenu>
 				
 			</p:panelMenu>	

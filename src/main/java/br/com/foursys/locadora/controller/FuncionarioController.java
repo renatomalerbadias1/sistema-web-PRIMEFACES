@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import br.com.foursys.locadora.bean.Funcionario;
 import br.com.foursys.locadora.dao.FuncionarioDAO;
 
+/*
+ * @author Renato
+ * @since 05/05/2021
+ * @version 1.0
+ */
+
 public class FuncionarioController {
 
 	public void salvar(Funcionario funcionario) {
@@ -31,6 +37,16 @@ public class FuncionarioController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Funcionario> buscarPorLogin(String login) {
+		ArrayList<Funcionario> retorno = new ArrayList<Funcionario>();
+		try {
+			retorno = new FuncionarioDAO().buscarPorLogin(login);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 	
 	

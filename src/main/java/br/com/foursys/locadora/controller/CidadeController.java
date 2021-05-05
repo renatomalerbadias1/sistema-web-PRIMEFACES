@@ -6,6 +6,12 @@ import br.com.foursys.locadora.bean.Cidade;
 import br.com.foursys.locadora.bean.Estado;
 import br.com.foursys.locadora.dao.CidadeDAO;
 
+/*
+ * @author Renato
+ * @since 05/05/2021
+ * @version 1.0
+ */
+
 public class CidadeController {
 
 	public ArrayList<Cidade> buscarPorEstado(Estado estado) {

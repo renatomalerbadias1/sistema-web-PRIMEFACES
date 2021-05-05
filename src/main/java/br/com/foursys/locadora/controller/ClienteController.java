@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import br.com.foursys.locadora.bean.Cliente;
 import br.com.foursys.locadora.dao.ClienteDAO;
 
+/*
+ * @author Renato
+ * @since 05/05/2021
+ * @version 1.0
+ */
+
 public class ClienteController {
 
 	public void salvar(Cliente cliente) {
@@ -31,6 +37,16 @@ public class ClienteController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Cliente> buscarTodos() {
+		ArrayList<Cliente> retorno = new ArrayList<Cliente>();
+		try {
+			retorno = new ClienteDAO().buscarTodos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 	
 	

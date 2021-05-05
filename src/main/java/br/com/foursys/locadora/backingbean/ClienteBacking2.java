@@ -28,6 +28,16 @@ import br.com.foursys.locadora.util.Perfil;
 import br.com.foursys.locadora.util.Titulo;
 import br.com.foursys.locadora.util.Valida;
 
+
+/*
+ * @author Renato
+ * @since 05/05/2021
+ * @version 1.0
+ */
+
+
+
+
 @ManagedBean(name = "clienteBacking")
 @SessionScoped
 public class ClienteBacking2 implements Serializable {
